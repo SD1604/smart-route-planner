@@ -41,3 +41,4 @@ pip install -r requirements.txt
 
 python3 -m backend.app
 ```
+Wait for atleast 30-40 seconds for the route to appear after selecting the locations
