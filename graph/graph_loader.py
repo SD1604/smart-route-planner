@@ -18,23 +18,22 @@ import networkx as nx
 #     return graph
 
 def initialize_graph(file_path="delhi_full.graphml"):
-    # Check if we already have the map saved on our computer
+    # Check if map is laready saved
     if os.path.exists(file_path):
         print(f"Loading graph from local file: {file_path}")
         return ox.load_graphml(file_path)
 
     print("File not found. Downloading Delhi graph from the internet...")
-    
-    # 1
+
     # (left, bottom, right, top)
     delhi_bbox = (76.83, 28.40, 77.35, 28.89)
     G = ox.graph_from_bbox(bbox=delhi_bbox, network_type='drive', retain_all=False)
 
-    # 2. Filter for SCC (This fixes the "broken route" problem)
+    # 2. getting SCC
     largest_scc_nodes = max(nx.strongly_connected_components(G), key=len)
     G = G.subgraph(largest_scc_nodes).copy()
 
-    # 3. Save it so we never have to download it again!
+    # 3.
     print(f"Saving graph to {file_path} for next time...")
     ox.save_graphml(G, filepath=file_path)
 
