@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS # pyright: ignore[reportMissingModuleSource]
 import osmnx as ox
 from algorithms.dijkstra import custom_dijkstra
 from algorithms.astar_path import astar_path
