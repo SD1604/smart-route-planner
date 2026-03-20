@@ -31,7 +31,7 @@ smart-route-planner/
 ## How to Run
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/smart-route-planner.git
+git clone https://github.com/SD1604/smart-route-planner.git
 cd smart-route-planner
 
 python3 -m venv venv
