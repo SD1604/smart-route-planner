@@ -51,5 +51,5 @@ def custom_dijkstra(G, start_node, end_node):
         return path, total_distance
     else:
         return [], 0
-
-print("Dijkstra Engine logic loaded.")
+    
+    print("Dijkstra Engine logic loaded.")

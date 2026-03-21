@@ -13,12 +13,16 @@ def haversine(lon1, lat1, lon2, lat2):
 
 def astar_path(graph, start_node, end_node):
 
+    # SPEED FIX: Pre-cache all coordinates into a simple dict
+    # This avoids slow 'graph.nodes[v]' lookups inside the loop
+    coords = {node: (data['x'], data['y']) for node, data in graph.nodes(data=True)}
+
     distances = {node: float('inf') for node in graph.nodes}
     distances[start_node] = 0
     parents = {node: None for node in graph.nodes}
 
     # Get goal coordinates once for the heuristic
-    goal_lat, goal_lon = graph.nodes[end_node]['y'], graph.nodes[end_node]['x']
+    goal_lat, goal_lon = coords[end_node]
 
     # Priority queue
     # [(priority, distance, node_id)]
@@ -30,7 +34,7 @@ def astar_path(graph, start_node, end_node):
         if u==end_node:
             break
 
-        if current_distance > distances[u]:
+        if current_distance > distances[u] or current_distance > 500000:
             continue
 
         # Relax edges
@@ -43,7 +47,8 @@ def astar_path(graph, start_node, end_node):
                 parents[v] = u
 
                 # Haversine heuristic
-                h = haversine(graph.nodes[v]['x'], graph.nodes[v]['y'],
+                v_lon, v_lat = coords[v]
+                h = haversine(v_lon, v_lat,
                               goal_lon, goal_lat)
                 heapq.heappush(pq, (new_dist + h, new_dist, v))
 
@@ -61,5 +66,5 @@ def astar_path(graph, start_node, end_node):
         return path, distances[end_node]
     else:
         return [], 0
-    
-print("A* pathfinding algorithm implemented successfully.")
+
+    print("A* pathfinding algorithm implemented successfully.")

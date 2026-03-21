@@ -41,8 +41,8 @@ def initialize_graph(file_path="delhi_full.graphml"):
     return G
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    G = initialize_graph("Delhi, India")
+#     G = initialize_graph("Delhi, India")
 
-    ox.plot_graph(G)
+#     ox.plot_graph(G)
