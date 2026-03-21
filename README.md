@@ -49,15 +49,16 @@ Switching to `nearest nodes lookup` enabled the use of spatial indexing (KD-tree
 
 ## Tech Stack
 
-Core: Python 3.x, NetworkX (Graph Modeling), OSMnx (Geospatial Data).
-Mathematics: Haversine Formula, KD-Tree/R-Tree Spatial Indexing.
-Backend: Flask (RESTful API), Gunicorn.
-Frontend: Leaflet.js, HTML5/CSS3, JavaScript (ES6+).
+- Core: Python 3.x, NetworkX (Graph Modeling), OSMnx (Geospatial Data).
+- Mathematics: Haversine Formula, KD-Tree/R-Tree Spatial Indexing.
+- Backend: Flask (RESTful API), Gunicorn.
+- Frontend: Leaflet.js, HTML5/CSS3, JavaScript (ES6+).
 
 ---
 
 ## Project Structure
 
+```
 Pathfinder_Pro/
 ├── algorithms/
 ├── backend/
@@ -66,6 +67,7 @@ Pathfinder_Pro/
 ├── frontend/
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
